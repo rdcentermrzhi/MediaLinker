@@ -41,11 +41,12 @@
 | 证书路径            | 开启SSL必填                  | 映射到宿主机/opt/privkey.pem                                                                             |
 | 证书申请命令          | 开启SSL必填                  | 映射到宿主机/opt/ssl [ssl示例](config%2Fssl)                                                               |
 | 配置文件            | `必填`                     | 映射到宿主机/opt/constant.js [emby示例](config%2Femby%2Fconstant.js) [plex示例](config%2Fplex%2Fconstant.js) |
+| 服务配置文件          | 可选                       | 可映射到宿主机`/opt/emby.conf`或`/opt/plex.conf`，用于自定义`nginx/conf.d/${SERVER}.conf`                      |
 
 ### 部署方式
 
 #### docker部署
-/home/MediaLinker/下创建证书文件、配置文件constant.js [emby示例](config%2Femby%2Fconstant.js) [plex示例](config%2Fplex%2Fconstant.js)
+/home/MediaLinker/下创建证书文件、配置文件constant.js [emby示例](config%2Femby%2Fconstant.js) [plex示例](config%2Fplex%2Fconstant.js)；如需自定义服务路由，可额外创建`emby.conf`或`plex.conf`
 
 ```
   docker run -d \

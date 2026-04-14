@@ -61,6 +61,14 @@ if [ ! -h "/etc/nginx/conf.d/constant.js" ]; then
   ln -s /opt/constant.js /etc/nginx/conf.d/constant.js
 fi
 
+# 暴露服务配置文件，便于宿主机自定义
+if [ ! -e "/opt/${SERVER}.conf" ]; then
+  echo "The nginx server conf is not mapped, creating /opt/${SERVER}.conf ..."
+  cp "/etc/nginx/conf.d/${SERVER}.conf" "/opt/${SERVER}.conf"
+fi
+rm -rf "/etc/nginx/conf.d/${SERVER}.conf"
+ln -s "/opt/${SERVER}.conf" "/etc/nginx/conf.d/${SERVER}.conf"
+
 # nginx日志输出到stdout
 if [[ -z "${NGINX_LOG_LEVEL}" ]]; then
   if ! grep -q "error_log /dev/stdout info;" /etc/nginx/nginx.conf; then
